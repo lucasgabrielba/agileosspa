@@ -1,4 +1,6 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
+import { AppTemplate } from './pages/AppTemplate';
+import { FeatureWrapper } from './components/common/FeatureWrapper';
 
 
 export const appRoutes = createBrowserRouter([
@@ -19,36 +21,6 @@ export const appRoutes = createBrowserRouter([
           </FeatureWrapper>
         ),
       },
-      // {
-      // 	path: 'settings',
-      // 	element: (
-      // 		<FeatureWrapper feature="Settings">
-      // 			<Settings />
-      // 		</FeatureWrapper>
-      // 	),
-      // },
-
-      // {
-      // 	path: 'campaigns',
-      // 	children: [
-      // 		{
-      // 			index: true,
-      // 			element: (
-      // 				<FeatureWrapper feature="Campaigns">
-      // 					<Campaigns />
-      // 				</FeatureWrapper>
-      // 			),
-      // 		},
-      // 		{
-      // 			path: 'create',
-      // 			element: (
-      // 				<FeatureWrapper feature="Campaigns">
-      // 					<CreateCampaign />
-      // 				</FeatureWrapper>
-      // 			),
-      // 		},
-      // 	],
-      // },
       {
         path: '*',
         element: <Navigate to={'/'} />,

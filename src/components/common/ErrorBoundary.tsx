@@ -36,7 +36,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               </div>
             </TooltipTrigger>
             <TooltipContent className="bg-foreground text-background p-2 rounded shadow-md">
-              Something went wrong.
+              Algo deu errado.
               <TooltipArrow className="fill-foreground" />
             </TooltipContent>
           </Tooltip>

@@ -1,11 +1,8 @@
-import { useOrganizationStore } from '@/store/Organizations/useOrganizationStore';
+import { useOrganizationStore } from '@/store/useOrganizationStore';
 import { type ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-enum FeaturesList {
-  Dashboard = 'Dashboard',
-  Settings = 'Settings'
-}
+export type FeaturesList = 'Dashboard' | 'Settings' | 'Campaigns';
 
 type FeatureWrapperProps = {
   feature: FeaturesList;

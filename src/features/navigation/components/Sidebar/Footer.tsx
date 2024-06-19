@@ -30,7 +30,7 @@ export function NavFooter() {
 									data-hidden={!isOpen}
 									className="data-[hidden=true]:hidden"
 								>
-									Collapse Sidebar
+									Fechar Menu
 								</span>
 							</>
 						)}

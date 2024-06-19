@@ -1,23 +1,18 @@
 import * as React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { LogOut } from 'lucide-react';
 
 import { useUserStore } from '@/features/login/hooks/useUserStore';
 
-import { ComponentFail } from '@/components/common/ComponentFail';
-import { ErrorBoundaryWrapper } from '@/components/common/ErrorBoundaryWrapper';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
-import { LanguageSelector } from '@/features/navigation/components/LanguageSelector';
 
-import { SelectActiveAccount } from './SelectActiveAccount';
-import { SelectStatusOfService } from './SelectStatusOfService';
 import { SelectTheme } from './SelectTheme';
 import { UserOptionsHeader } from './UserOptionsHeader';
 import { UserOptionsPopoverTrigger } from './UserOptionsPopoverTrigger';
+import ErrorBoundary from '@/components/common/ErrorBoundary';
 
 export function UserOptions() {
 	const { user, clearUser } = useUserStore();
@@ -25,10 +20,10 @@ export function UserOptions() {
 	const location = useLocation();
 
 	React.useEffect(() => {
-		if (!user?.uuid) {
+		if (!user?.id) {
 			return navigate(`/login?redirectTo=${location.pathname}`);
 		}
-	}, [user?.uuid, navigate, location.pathname]);
+	}, [user?.id, navigate, location.pathname]);
 
 	const logout = () => {
 		clearUser();
@@ -36,7 +31,7 @@ export function UserOptions() {
 	};
 
 	return (
-		<ErrorBoundaryWrapper fallback={ComponentFail}>
+		<ErrorBoundary>
 			<Popover>
 				<UserOptionsPopoverTrigger />
 
@@ -47,22 +42,16 @@ export function UserOptions() {
 						<Separator className="my-2" />
 						<div className="grid gap-2">
 							<SelectTheme />
-
-							<SelectActiveAccount />
-
-							<SelectStatusOfService />
-
-							<LanguageSelector />
 						</div>
 						<Separator className="my-2" />
 
 						<Button variant="destructive" onClick={logout}>
 							<LogOut className="mr-1 h-4 w-4" />
-							{t('userOptions.logout')}
+							<span>Sair</span>
 						</Button>
 					</div>
 				</PopoverContent>
 			</Popover>
-		</ErrorBoundaryWrapper>
+		</ErrorBoundary>
 	);
 }

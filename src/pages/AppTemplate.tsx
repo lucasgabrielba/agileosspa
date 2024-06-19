@@ -1,6 +1,8 @@
+import { CommandPallete } from '@/features/navigation/components/CommandPallete';
+import { Sidebar } from '@/features/navigation/components/Sidebar';
+import { SidebarMobile } from '@/features/navigation/components/SidebarMobile';
 import { Outlet } from 'react-router-dom';
 
-import { CommandPallete, Sidebar, SidebarMobile } from '@/features/navigation';
 
 export function AppTemplate() {
   return (

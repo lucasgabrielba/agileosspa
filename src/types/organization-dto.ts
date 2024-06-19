@@ -11,6 +11,7 @@ export interface OrganizationDTO {
 
   preferences: OrganizationPreferences;
   abilites: string[];
+  brand: OrganizationBrand;
   adress?: AddressDTO;
 
   created_at: Date;
@@ -25,5 +26,16 @@ export enum OrganizationStatus {
 
 export interface OrganizationPreferences {
   multiple_items_per_order: boolean;
+}
+
+export interface OrganizationBrand {
+  name: string;
+  assets: OrganizationAssets;
+}
+
+export interface OrganizationAssets {
+  logoUrl: string;
+  login: { bannerUrl: string }
+  faviconUrl: string;
 }
 

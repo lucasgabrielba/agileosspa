@@ -1,0 +1,29 @@
+import { useCallback } from 'react';
+
+import { api } from '@/config/api';
+import { useUsersStore } from '@/store/useUserStore';
+
+interface Credentials {
+	email: string;
+	password: string;
+}
+
+export function useAuth() {
+	const setUser = useUsersStore((state) => state.setUser);
+
+	const loginUser = useCallback(async (credentials: Credentials) => {
+		await api.get('/sanctum/csrf-cookie');
+		await api.post('/auth/login', credentials);
+	}, []);
+
+	const fetchUser = useCallback(async () => {
+		try {
+			const response = await api.get('/auth/get-me');
+			setUser(response.data);
+		} catch (error) {
+			console.error('Error fetching user:', error);
+		}
+	}, []);
+
+	return { loginUser, fetchUser };
+}

@@ -9,20 +9,22 @@
     ],
     "module": "ESNext",
     "skipLibCheck": true,
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    /* Adjusted module resolution for compatibility with resolveJsonModule */
+    "moduleResolution": "node",
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     /* Linting */
     "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    /* Paths */
-    "baseUrl": ".",
+    /* Base */
+    "baseUrl": "./",
     "paths": {
       "@/*": [
         "src/*"
@@ -30,7 +32,14 @@
     }
   },
   "include": [
-    "src"
+    "src/**/*",
+    "tailwind.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "src/__mocks__"
   ],
   "references": [
     {

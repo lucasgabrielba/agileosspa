@@ -10,6 +10,7 @@ export interface OrganizationDTO {
   document?: string;
 
   preferences: OrganizationPreferences;
+  abilites: string[];
   adress?: AddressDTO;
 
   created_at: Date;

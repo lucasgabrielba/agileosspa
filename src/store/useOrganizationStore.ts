@@ -14,9 +14,9 @@ interface OrganizationsActions {
   updatePreferences: (partialPreferences: Partial<OrganizationPreferences>) => void;
 }
 
-interface OrganizationsStore extends OrganizationsState, OrganizationsActions { }
+interface OrganizationStore extends OrganizationsState, OrganizationsActions { }
 
-export const useOrganizationsStore = create<OrganizationsStore>((set) => ({
+export const useOrganizationStore = create<OrganizationStore>((set) => ({
   organization: {} as OrganizationDTO,
 
   setOrganization: (organization: OrganizationDTO) => set({ organization }),

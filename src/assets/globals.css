@@ -4,47 +4,128 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #161616;
-    --card: #ffffff;
-    --card-foreground: #161616;
-    --popover: #ffffff;
-    --popover-foreground: #161616;
-    --primary: #1e90ff;
-    --primary-foreground: #d1e7ff;
-    --secondary: #f0f4ff;
-    --secondary-foreground: #222222;
-    --muted: #f0f4ff;
-    --muted-foreground: #6f7d96;
-    --accent: #f0f4ff;
-    --accent-foreground: #222222;
-    --destructive: #ff4747;
-    --destructive-foreground: #d1e7ff;
-    --border: #e5e5e5;
-    --input: #e5e5e5;
-    --ring: #1e90ff;
-    --radius: 0.5rem;
+    --background: hsl(210, 40%, 96.1%);
+    --foreground: hsl(222.2, 84%, 4.9%);
+
+    --card: hsl(203, 50%, 75%);
+    --card-foreground: hsl(222.2, 84%, 4.9%);
+
+    --popover: hsl(236, 47%, 79%);
+    --popover-foreground: hsl(224, 72%, 25%);
+
+    --primary: hsl(240, 78%, 31%);
+    --primary-foreground: hsl(0, 0%, 100%);
+
+    --secondary: hsl(0, 0%, 100%);
+    --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
+
+    --tertiary: hsl(206, 92%, 70%);
+    --tertiary-foreground: hsl(222.2, 47.4%, 11.2%);
+
+    --info: hsl(206, 84%, 50%);
+    --info-foreground: hsl(88, 96%, 89%);
+
+    --success: hsl(138, 92%, 50%);
+    --success-foreground: hsl(148, 96%, 89%);
+
+    --warning: hsl(38, 92%, 50%);
+    --warning-foreground: hsl(48, 96%, 89%);
+
+    --muted: hsl(0, 0%, 91%);
+    --muted-foreground: hsl(210, 7%, 22%);
+
+    --accent: hsl(237, 49%, 91%);
+    --accent-foreground: hsl(0, 0%, 0%);
+
+    --destructive: hsl(0, 84%, 60%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+
+    --sent-message-baloon: hsl(206, 84%, 50%);
+    --sent-message-baloon-foreground: hsl(88, 96%, 89%);
+
+    --received-message-baloon: hsl(38, 92%, 50%);
+    --received-message-baloon-foreground: hsl(48, 96%, 89%);
+
+    --ring: 0;
+    --border: hsl(214.3, 31.8%, 91.4%);
+    --input: hsl(214.3, 31.8%, 91.4%);
+
+    --radius: 1rem;
   }
 
   .dark {
-    --background: #161616;
-    --foreground: #d1e7ff;
-    --card: #161616;
-    --card-foreground: #d1e7ff;
-    --popover: #161616;
-    --popover-foreground: #d1e7ff;
-    --primary: #3d7ff4;
-    --primary-foreground: #222222;
-    --secondary: #2c2c2c;
-    --secondary-foreground: #d1e7ff;
-    --muted: #2c2c2c;
-    --muted-foreground: #a8b3d1;
-    --accent: #2c2c2c;
-    --accent-foreground: #d1e7ff;
-    --destructive: #991b1b;
-    --destructive-foreground: #d1e7ff;
-    --border: #2c2c2c;
-    --input: #2c2c2c;
-    --ring: #407fff;
+    --background: hsl(225, 38%, 16%);
+    --foreground: hsl(210, 40%, 98%);
+
+    --card: hsl(222.2, 84%, 4.9%);
+    --card-foreground: hsl(210, 40%, 98%);
+
+    --popover: hsl(223, 88%, 25%);
+    --popover-foreground: hsl(210, 40%, 98%);
+
+    --primary: hsl(240, 100%, 39%);
+    --primary-foreground: hsl(210, 3%, 89%);
+
+    --secondary: hsl(217.2, 32.6%, 17.5%);
+    --secondary-foreground: hsl(210, 40%, 98%);
+
+    --tertiary: hsl(206, 66%, 49%);
+    --tertiary-foreground: hsl(222.2, 47.4%, 11.2%);
+
+    --info: hsl(206, 84%, 50%);
+    --info-foreground: hsl(88, 96%, 89%);
+
+    --success: hsl(138, 92%, 50%);
+    --success-foreground: hsl(148, 96%, 89%);
+
+    --warning: hsl(48, 96%, 89%);
+    --warning-foreground: hsl(38, 92%, 50%);
+
+    --muted: hsl(217.2, 32.6%, 17.5%);
+    --muted-foreground: hsl(215, 20.2%, 65.1%);
+
+    --accent: hsl(92, 82%, 18%);
+    --accent-foreground: hsl(0, 0%, 86%);
+
+    --destructive: hsl(0, 62%, 30%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+
+    --sent-message-baloon: hsl(206, 86%, 36%);
+    --sent-message-baloon-foreground: hsl(88, 96%, 89%);
+
+    --received-message-baloon: hsl(38, 95%, 40%);
+    --received-message-baloon-foreground: hsl(48, 96%, 89%);
+
+    --ring: 0;
+    --border: hsl(217.2, 32.6%, 17.5%);
+    --input: hsl(217.2, 32.6%, 17.5%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply flex overflow-hidden bg-background text-foreground;
+  }
+
+  #root {
+    @apply flex h-full overflow-hidden;
+  }
+
+  *::-webkit-scrollbar {
+    @apply w-1.5 h-2;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-transparent rounded-sm;
+  }
+
+  *:focus::-webkit-scrollbar-thumb,
+  *:hover::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb:hover {
+    @apply w-5 cursor-pointer bg-slate-400;
   }
 }

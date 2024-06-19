@@ -26,11 +26,10 @@ export const EchoClient = new Echo({
 		options;
 		return {
 			authorize: (socketId, callback) => {
-				api
-					.post('broadcasting/auth', {
-						socket_id: socketId,
-						channel_name: channel.name,
-					})
+				api.post('broadcasting/auth', {
+					socket_id: socketId,
+					channel_name: channel.name,
+				})
 					.then((response) => {
 						callback(false, response.data);
 					})

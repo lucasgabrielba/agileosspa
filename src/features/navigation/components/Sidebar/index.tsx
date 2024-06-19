@@ -13,8 +13,7 @@ import { useOrganizationStore } from '@/store/useOrganizationStore';
 
 export function Sidebar({ className, ...otherProps }: ComponentProps<'aside'>) {
 	const { isOpen } = useSidebar();
-	const { organization } = useOrganizationStore();
-	const brand = organization?.brand;
+	const { brand } = useOrganizationStore();
 
 	return (
 		<aside

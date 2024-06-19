@@ -3,8 +3,7 @@ import { Logo } from '@/components/logo';
 import { useOrganizationStore } from '@/store/useOrganizationStore';
 
 export function FormHeader() {
-	const { organization } = useOrganizationStore();
-	const brand = organization?.brand;
+	const { brand } = useOrganizationStore();
 
 	return (
 		<div className="flex flex-col space-y-2 text-center">

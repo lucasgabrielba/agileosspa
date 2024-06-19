@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { LoginBanner, LoginForm, useUserStore } from '@/features/login';
 import { cn } from '@/lib/utils';
 import { useOrganizationStore } from '@/store/useOrganizationStore';
+import { useUserStore } from '@/store/useUserStore';
+import { LoginBanner } from '@/features/login/components/LoginBanner';
+import { LoginForm } from '@/features/login/components/LoginForm/LoginForm';
 
 export function Login() {
 	const emailInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -11,16 +13,15 @@ export function Login() {
 	const redirectTo = searchParams.get('redirectTo') || '/dashboard';
 	const navigate = useNavigate();
 	const { user } = useUserStore();
-	const { organization } = useOrganizationStore();
-	const brand = organization?.brand;
+	const { brand } = useOrganizationStore();
 
 	React.useEffect(() => {
-		if (user?.uuid) {
+		if (user?.id) {
 			navigate(redirectTo);
 		}
 
 		if (emailInputRef.current) emailInputRef.current.focus();
-	}, [user?.uuid, redirectTo, navigate]);
+	}, [user?.id, redirectTo, navigate]);
 
 	return (
 		<div className="bg-background h-dvh min-h-96 w-screen lg:grid lg:grid-cols-[auto,1fr]">

@@ -6,13 +6,13 @@ import { useSidebar } from '../sidebar-store';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { PopoverTrigger } from '@/components/ui/popover';
 import { getInitials } from '@/lib/getInitials';
-import { useUsersStore } from '@/store/useUserStore';
+import { useUserStore } from '@/store/useUserStore';
 import { Button } from '@/components/ui/button';
 
 
 export function UserOptionsPopoverTrigger() {
 	const { isOpen } = useSidebar();
-	const { user } = useUsersStore();
+	const { user } = useUserStore();
 	const navigate = useNavigate();
 	const location = useLocation();
 

@@ -11,8 +11,7 @@ export function SidebarMobile({
 	className,
 	...props
 }: ComponentProps<'header'>) {
-	const { organization } = useOrganizationStore();
-	const brand = organization?.brand;
+	const { brand } = useOrganizationStore();
 
 	return (
 		<header

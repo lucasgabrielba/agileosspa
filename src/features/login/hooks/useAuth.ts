@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { api } from '@/config/api';
-import { useUsersStore } from '@/store/useUserStore';
+import { useUserStore } from '@/store/useUserStore';
 
 interface Credentials {
 	email: string;
@@ -9,7 +9,7 @@ interface Credentials {
 }
 
 export function useAuth() {
-	const setUser = useUsersStore((state) => state.setUser);
+	const setUser = useUserStore((state) => state.setUser);
 
 	const loginUser = useCallback(async (credentials: Credentials) => {
 		await api.get('/sanctum/csrf-cookie');

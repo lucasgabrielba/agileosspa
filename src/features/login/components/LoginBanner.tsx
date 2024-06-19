@@ -7,8 +7,8 @@ type LoginBannerProps = {
 };
 
 export function LoginBanner({ src }: LoginBannerProps & ComponentProps<'img'>) {
-	const { organization } = useOrganizationStore();
-	const brand = organization?.brand;
+	const { brand } = useOrganizationStore();
+
 	const [source, setSource] = useState(src);
 
 	function handleError() {

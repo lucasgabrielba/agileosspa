@@ -12,8 +12,7 @@ export function Logo({
   fallbackSrc,
   ...otherProps
 }: LogoProps & ComponentProps<'img'>) {
-  const { organization } = useOrganizationStore();
-  const brand = organization?.brand
+  const { brand } = useOrganizationStore();
 
   const [source, setSource] = useState(src);
 

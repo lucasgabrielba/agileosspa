@@ -1,7 +1,7 @@
 import { env } from '@/config/env';
+import { useUserStore } from '@/store/useUserStore';
 import axios from 'axios';
 
-import { useUserStore } from '@/features/login/hooks/useUserStore';
 
 const { clearUser } = useUserStore.getState();
 

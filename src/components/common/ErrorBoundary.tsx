@@ -1,6 +1,7 @@
 import React, { Component, ReactNode } from 'react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { TooltipArrow } from '@radix-ui/react-tooltip';
 import { AlertCircle } from 'lucide-react';
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider, TooltipArrow } from 'shadcn';
 
 interface ErrorBoundaryProps {
   children: ReactNode;

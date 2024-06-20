@@ -10,7 +10,7 @@ export interface OrganizationDTO {
   document?: string;
 
   preferences: OrganizationPreferences;
-  abilites: OrganizationAbilites[];
+  abilities: Organizationabilities[];
   brand: OrganizationBrand;
   adress?: AddressDTO;
 
@@ -39,5 +39,5 @@ export interface OrganizationAssets {
   faviconUrl: string;
 }
 
-export type OrganizationAbilites = 'Dashboard' | 'Settings' | 'Orders';
+export type Organizationabilities = 'Dashboard' | 'Settings' | 'Orders';
 

@@ -1,8 +1,6 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-// import { AppTemplate } from './pages/AppTemplate';
-// import { FeatureWrapper } from './components/common/FeatureWrapper';
 import { Login } from './pages/login';
-import { Dashboard } from './pages/dashboard';
+import { Orders } from './pages/orders';
 import { FeatureWrapper } from './components/common/FeatureWrapper';
 import { AppTemplate } from './pages/AppTemplate';
 
@@ -21,7 +19,7 @@ export const appRoutes = createBrowserRouter([
         index: true,
         element: (
           <FeatureWrapper feature="Dashboard">
-            <Dashboard />
+            <Orders />
           </FeatureWrapper>
         ),
       },

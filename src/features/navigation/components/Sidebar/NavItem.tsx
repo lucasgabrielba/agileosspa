@@ -19,9 +19,9 @@ export function NavItem({ data }: NavItemProps) {
 	const { featureKey, path, icon: Icon, label, hint } = data;
 	const { isOpen, closeSidebar } = useSidebar();
 	const { organization } = useOrganizationStore();
-	const abilites = organization?.abilites;
+	const abilities = organization?.abilities;
 
-	if (abilites && !abilites.includes(featureKey ?? '')) {
+	if (abilities && !abilities.includes(featureKey ?? '')) {
 		return null;
 	}
 

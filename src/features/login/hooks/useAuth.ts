@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 
 import { api } from '@/config/api';
 import { useUserStore } from '@/store/useUserStore';
+import { useOrganizationStore } from '@/store/useOrganizationStore';
 
 interface Credentials {
 	email: string;
@@ -10,6 +11,8 @@ interface Credentials {
 
 export function useAuth() {
 	const setUser = useUserStore((state) => state.setUser);
+	const { setOrganization } = useOrganizationStore();
+
 
 	const loginUser = useCallback(async (credentials: Credentials) => {
 		await api.get('/sanctum/csrf-cookie');
@@ -21,6 +24,7 @@ export function useAuth() {
 		try {
 			const response = await api.get('/auth/get-me');
 			setUser(response.data);
+			setOrganization(response.data.organization);
 		} catch (error) {
 			console.error('Error fetching user:', error);
 		}

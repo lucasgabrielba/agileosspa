@@ -11,11 +11,11 @@ type NavGroupProps = {
 	data: NavigationLink;
 };
 export function NavItem({ data }: NavGroupProps) {
-	const { abilites } = useOrganizationStore();
+	const { abilities } = useOrganizationStore();
 	const navigate = useNavigate();
 	const { close: closeSidebar } = useMobileSidebar();
 
-	if (abilites && !abilites.includes(data.featureKey)) {
+	if (abilities && !abilities.includes(data.featureKey)) {
 		return null;
 	}
 

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import type { OrganizationAbilites, OrganizationBrand, OrganizationDTO, OrganizationPreferences } from '@/types/organization-dto';
+import type { Organizationabilities, OrganizationBrand, OrganizationDTO, OrganizationPreferences } from '@/types/organization-dto';
 
 type OrganizationStoreState = {
   organization: OrganizationDTO | null;
@@ -20,10 +20,10 @@ type OrganizationStoreState = {
   setBrand: (newBrand: OrganizationBrand) => void;
   updateBrand: (partialBrand: Partial<OrganizationBrand>) => void;
 
-  abilites: OrganizationAbilites[] | null;
+  abilities: Organizationabilities[] | null;
 
-  setAbilites: (newAbilites: OrganizationAbilites[]) => void;
-  updateAbilites: (partialAbilites: Partial<OrganizationAbilites>) => void;
+  setabilities: (newabilities: Organizationabilities[]) => void;
+  updateabilities: (partialabilities: Partial<Organizationabilities[]>) => void;
 
 };
 
@@ -37,7 +37,12 @@ export const useOrganizationStore = create(
         set({ preferences: storedState.preferences || null });
         set({ organization: storedState.organization || null });
       },
-      setOrganization: (newOrganization: OrganizationDTO) => set({ organization: newOrganization }),
+      setOrganization: (newOrganization: OrganizationDTO) => set({
+        organization: newOrganization,
+        brand: newOrganization.brand,
+        preferences: newOrganization.preferences,
+        abilities: newOrganization.abilities,
+      }),
       updateOrganization: (partialOrganization: Partial<OrganizationDTO>) =>
         set((state) => ({ organization: { ...state.organization, ...partialOrganization } })),
       clearOrganization: () => set({ organization: null }),
@@ -52,10 +57,10 @@ export const useOrganizationStore = create(
       updateBrand: (partialBrand: Partial<OrganizationBrand>) =>
         set((state) => ({ brand: { ...state.brand, ...partialBrand } })),
 
-      abilites: null,
-      setAbilites: (newAbilites: OrganizationAbilites) => set({ abilites: newAbilites }),
-      updateAbilites: (partialAbilites: Partial<OrganizationAbilites>) =>
-        set((state) => ({ abilites: { ...state.abilites, ...partialAbilites } })),
+      abilities: null,
+      setabilities: (newabilities: Organizationabilities[]) => set({ abilities: newabilities }),
+      updateabilities: (partialabilities: Partial<Organizationabilities[]>) =>
+        set((state) => ({ abilities: [...state.abilities, ...partialabilities] })),
     }),
     {
       name: 'organization-storage',

@@ -2,7 +2,7 @@ import { useOrganizationStore } from '@/store/useOrganizationStore';
 import { type ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export type FeaturesList = 'Dashboard' | 'Settings' | 'Campaigns';
+export type FeaturesList = 'Dashboard' | 'Settings' | 'Orders';
 
 type FeatureWrapperProps = {
   feature: FeaturesList;
@@ -11,14 +11,13 @@ type FeatureWrapperProps = {
 
 export function FeatureWrapper({ feature, children }: FeatureWrapperProps) {
   const navigate = useNavigate();
-  const { organization } = useOrganizationStore();
-  const abilites = organization?.abilites;
+  const { abilities } = useOrganizationStore();
 
   useEffect(() => {
-    if (abilites && !abilites.includes(feature)) {
+    if (abilities && !abilities.includes(feature)) {
       navigate('/', { replace: true });
     }
-  }, [abilites, feature, navigate]);
+  }, [abilities, feature, navigate]);
 
   return children;
 }

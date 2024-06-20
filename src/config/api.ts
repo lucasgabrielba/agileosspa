@@ -16,7 +16,7 @@ api.interceptors.response.use(
 	(error) => {
 		if (error.response?.status === 401) {
 			clearUser();
-			// Pega a rota atual para redirecionar o usuário para a mesma rota após o login
+
 			const from = window.location.pathname;
 
 			window.location.href = `/login?redirectTo=${from}`;

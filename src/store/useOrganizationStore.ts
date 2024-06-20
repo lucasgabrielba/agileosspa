@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import type { OrganizationBrand, OrganizationDTO, OrganizationPreferences } from '@/types/organization-dto';
+import type { OrganizationAbilites, OrganizationBrand, OrganizationDTO, OrganizationPreferences } from '@/types/organization-dto';
 
 type OrganizationStoreState = {
   organization: OrganizationDTO | null;
@@ -19,6 +19,11 @@ type OrganizationStoreState = {
 
   setBrand: (newBrand: OrganizationBrand) => void;
   updateBrand: (partialBrand: Partial<OrganizationBrand>) => void;
+
+  abilites: OrganizationAbilites[] | null;
+
+  setAbilites: (newAbilites: OrganizationAbilites[]) => void;
+  updateAbilites: (partialAbilites: Partial<OrganizationAbilites>) => void;
 
 };
 
@@ -46,6 +51,11 @@ export const useOrganizationStore = create(
       setBrand: (newBrand: OrganizationBrand) => set({ brand: newBrand }),
       updateBrand: (partialBrand: Partial<OrganizationBrand>) =>
         set((state) => ({ brand: { ...state.brand, ...partialBrand } })),
+
+      abilites: null,
+      setAbilites: (newAbilites: OrganizationAbilites) => set({ abilites: newAbilites }),
+      updateAbilites: (partialAbilites: Partial<OrganizationAbilites>) =>
+        set((state) => ({ abilites: { ...state.abilites, ...partialAbilites } })),
     }),
     {
       name: 'organization-storage',

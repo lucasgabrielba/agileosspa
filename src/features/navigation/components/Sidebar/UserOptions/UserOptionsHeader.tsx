@@ -1,4 +1,4 @@
-import { useUserStore } from '@/features/login/hooks/useUserStore';
+import { useUserStore } from "@/store/useUserStore";
 
 export function UserOptionsHeader() {
 	const { user } = useUserStore();

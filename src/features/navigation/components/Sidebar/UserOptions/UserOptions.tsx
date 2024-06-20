@@ -3,8 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { LogOut } from 'lucide-react';
 
-import { useUserStore } from '@/features/login/hooks/useUserStore';
-
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
@@ -13,6 +11,7 @@ import { SelectTheme } from './SelectTheme';
 import { UserOptionsHeader } from './UserOptionsHeader';
 import { UserOptionsPopoverTrigger } from './UserOptionsPopoverTrigger';
 import ErrorBoundary from '@/components/common/ErrorBoundary';
+import { useUserStore } from '@/store/useUserStore';
 
 export function UserOptions() {
 	const { user, clearUser } = useUserStore();

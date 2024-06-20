@@ -5,7 +5,7 @@ export function FormFooter() {
 			<a href="/terms" className="underline hover:text-primary">
 				Termos de Serviço
 			</a>{' '}
-			and{' '}
+			e{' '}
 			<a href="/privacy" className="underline hover:text-primary">
 				Política de Privacidade
 			</a>

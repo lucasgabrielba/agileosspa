@@ -25,7 +25,7 @@ export function SearchOrderInput({ searchTerm, setSearchTerm }: OrderInputProps)
   }, []);
 
   return (
-    <div className="relative">
+    <div className="w-full">
       <Label htmlFor="searchTerm" className="text-sx text-foreground">
         Busque por
       </Label>

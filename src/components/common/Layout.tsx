@@ -8,7 +8,7 @@ export function Layout({ children, className = '' }) {
 
 Layout.Header = function Header({ children, className = '' }) {
   return (
-    <header className={`bg-primary h-16 w-full flex items-center justify-center ${className}`}>
+    <header className={`bg-primary h-16 w-full flex items-center justify-center p-5 ${className}`}>
       {children}
     </header>
   );

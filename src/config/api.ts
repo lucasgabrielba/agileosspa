@@ -11,17 +11,17 @@ export const api = axios.create({
 	withXSRFToken: true,
 });
 
-api.interceptors.response.use(
-	(response) => response,
-	(error) => {
-		if (error.response?.status === 401) {
-			clearUser();
+// api.interceptors.response.use(
+// 	(response) => response,
+// 	(error) => {
+// 		if (error.response?.status === 401) {
+// 			clearUser();
 
-			const from = window.location.pathname;
+// 			const from = window.location.pathname;
 
-			window.location.href = `/login?redirectTo=${from}`;
-		}
+// 			window.location.href = `/login?redirectTo=${from}`;
+// 		}
 
-		return Promise.reject(error);
-	},
-);
+// 		return Promise.reject(error);
+// 	},
+// );

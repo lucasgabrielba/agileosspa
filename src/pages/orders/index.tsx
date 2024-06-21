@@ -6,9 +6,7 @@ export function Orders() {
   return (
     <Layout>
       <Layout.Header className="h-48 bg-secondary">
-        <h1>
-          <SearchOrder />
-        </h1>
+        <SearchOrder />
       </Layout.Header>
 
       <Layout.Main withSidebar={false}>

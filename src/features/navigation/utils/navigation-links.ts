@@ -1,13 +1,14 @@
+import { OrganizationAbilities } from '@/types/dtos/organization-dto';
 import {
-	Home,
 	Settings,
+	Wrench,
 	type LucideIcon,
 } from 'lucide-react';
 
 export type NavigationLink = {
 	key: string;
 	path: string;
-	featureKey?: string;
+	featureKey?: OrganizationAbilities;
 	icon: LucideIcon;
 	label: string;
 	hint?: string;
@@ -16,16 +17,16 @@ export type NavigationLink = {
 
 export const navigationLinks: Array<NavigationLink> = [
 	{
-		key: 'dashboard',
-		featureKey: 'Dashboard',
-		path: '/dashboard',
-		icon: Home,
-		label: 'Dashboard',
-		hint: 'Dashboard'
+		key: 'orders',
+		featureKey: 'Orders',
+		path: '/ordem-de-servico',
+		icon: Wrench,
+		label: 'Ordem de Serviço',
+		hint: 'Ordem de Serviço'
 	},
 	{
 		key: 'preferencias',
-		featureKey: 'Preferencias',
+		featureKey: 'Settings',
 		path: '/preferencias',
 		icon: Settings,
 		label: 'Preferencias',

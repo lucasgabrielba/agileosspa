@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import type { UserDTO } from '@/types/user-dto';
+import type { UserDTO } from '@/types/dtos/user-dto';
 
 type UserStoreState = {
   user: UserDTO | null;

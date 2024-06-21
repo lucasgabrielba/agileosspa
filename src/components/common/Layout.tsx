@@ -1,6 +1,6 @@
 export function Layout({ children, className = '' }) {
   return (
-    <div className={`bg-secondary h-full w-full lg:rounded-sm clearfix overflow-hidden ${className}`}>
+    <div className={`bg-secondary h-full w-full lg:rounded-sm clearfix overflow ${className}`}>
       {children}
     </div>
   );
@@ -8,7 +8,7 @@ export function Layout({ children, className = '' }) {
 
 Layout.Header = function Header({ children, className = '' }) {
   return (
-    <header className={`bg-primary h-16 w-full flex items-center justify-start ${className} px-5`}>
+    <header className={`bg-primary h-16 w-full flex items-center justify-center ${className}`}>
       {children}
     </header>
   );
@@ -16,7 +16,7 @@ Layout.Header = function Header({ children, className = '' }) {
 
 Layout.Aside = function Aside({ children, className = '' }) {
   return (
-    <aside className={`bg-primary h-full w-full lg:w-1/5 lg:float-left flex items-center justify-center ${className}`}>
+    <aside className={`bg-primary h-full w-1/5 float-left flex items-center justify-center ${className}`}>
       {children}
     </aside>
   );
@@ -24,7 +24,7 @@ Layout.Aside = function Aside({ children, className = '' }) {
 
 Layout.Main = function Main({ children, className = '', withSidebar }) {
   return (
-    <main className={`bg-tertiary h-full w-full lg:${withSidebar ? 'w-4/5 float-right' : 'w-full'} flex items-center justify-center ${className}`}>
+    <main className={`bg-tertiary h-full ${withSidebar ? 'w-4/5 float-right' : 'w-full'} flex items-center justify-center ${className}`}>
       {children}
     </main>
   );

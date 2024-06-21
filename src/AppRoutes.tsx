@@ -18,7 +18,7 @@ export const appRoutes = createBrowserRouter([
         path: '/',
         index: true,
         element: (
-          <FeatureWrapper feature="Dashboard">
+          <FeatureWrapper feature="Orders">
             <Orders />
           </FeatureWrapper>
         ),

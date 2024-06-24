@@ -16,10 +16,11 @@ export const useOrdersQuery = ({
   organization,
   search = null,
 }: OrderQueryProps) => {
-  const fetchOrders = async ({ pageParam = undefined }): Promise<Page<OrderDTO>> => {
+  const fetchOrders = async ({ pageParam = 1 }): Promise<Page<OrderDTO>> => {
     const params = {
       per_page: 15,
       page: pageParam,
+      include: 'client,client.phones',
     };
 
     if (search) {
@@ -32,16 +33,11 @@ export const useOrdersQuery = ({
   };
 
   return useInfiniteQuery({
-    queryKey: [queryKey],
+    queryKey: [queryKey, organization.id, search],
     queryFn: fetchOrders,
     getNextPageParam: (lastPageLoaded: Page<OrderDTO>) => {
-      return lastPageLoaded.meta?.next_page_url !== null
-        ? lastPageLoaded.meta?.current_page + 1
-        : undefined;
+      return lastPageLoaded.meta?.next_page_url ? lastPageLoaded.meta.current_page + 1 : undefined;
     },
-    initialPageParam: undefined,
+    initialPageParam: 1,
   });
 };
-
-
-

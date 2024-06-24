@@ -5,8 +5,6 @@ import type { OrganizationAbilities, OrganizationBrand, OrganizationDTO, Organiz
 
 type OrganizationStoreState = {
   organization: OrganizationDTO | null;
-
-  loadOrganization: () => Promise<void>;
   setOrganization: (newOrganization: OrganizationDTO) => void;
   updateOrganization: (partialOrganization: Partial<OrganizationDTO>) => void;
   clearOrganization: () => void;
@@ -31,12 +29,6 @@ export const useOrganizationStore = create(
   persist<OrganizationStoreState>(
     (set) => ({
       organization: null,
-      loadOrganization: async () => {
-        const storedState = JSON.parse(localStorage.getItem('organization-storage') || '{}');
-        set({ brand: storedState.brand || null });
-        set({ preferences: storedState.preferences || null });
-        set({ organization: storedState.organization || null });
-      },
       setOrganization: (newOrganization: OrganizationDTO) => set({
         organization: newOrganization,
         brand: newOrganization.brand,

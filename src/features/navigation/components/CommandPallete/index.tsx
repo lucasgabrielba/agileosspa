@@ -28,7 +28,6 @@ export function CommandPallete() {
   }, []);
 
   const handleSelect = (value: string): void => {
-    console.log(value);
     setOpen(false);
     navigate(`${value}`);
   };

@@ -1,6 +1,10 @@
+import { ClientDTO } from "./client-dto";
+
 export interface OrderDTO {
   id: string;
   number: string;
+
+  client?: ClientDTO;
 
   organization_id: string;
   client_id: string;
@@ -27,6 +31,7 @@ export interface OrderDTO {
 }
 
 export interface OrderItems {
+  id: string;
   model: string;
   serial: string;
   brand: string;

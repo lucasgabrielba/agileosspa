@@ -17,7 +17,9 @@ export function useAuth() {
 	const loginUser = useCallback(async (credentials: Credentials) => {
 		await api.get('/sanctum/csrf-cookie');
 		const response = await api.post('/auth/login', credentials);
-		api.defaults.headers['Authorization'] = `Bearer ${response.data.token}`;
+		const token = response.data.token;
+		localStorage.setItem('authToken', token);
+		api.defaults.headers['Authorization'] = `Bearer ${token}`;
 	}, []);
 
 	const fetchUser = useCallback(async () => {

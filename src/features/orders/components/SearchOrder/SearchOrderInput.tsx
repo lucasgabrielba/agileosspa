@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 
@@ -9,7 +8,6 @@ interface OrderInputProps {
 }
 
 export function SearchOrderInput({ searchTerm, setSearchTerm }: OrderInputProps) {
-
   const [placeholder, setPlaceholder] = React.useState('Nome do Cliente');
   const placeholders = ['Nome do Cliente', 'Número da Ordem de Serviço', 'Equipamento', 'Telefone do Cliente'];
 

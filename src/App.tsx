@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -9,8 +8,9 @@ import { TooltipProvider } from './components/ui/tooltip';
 
 import { appRoutes } from './AppRoutes';
 import { FIFTEEN_MINUTES, FIVE_MINUTES, isDev } from './config/constants';
-import { useOrganizationStore } from './store/useOrganizationStore';
 import { ThemeProvider } from './components/theme-provider';
+import React from 'react';
+import { configureAxios } from './config/api';
 
 
 const queryClient = new QueryClient({
@@ -24,11 +24,10 @@ const queryClient = new QueryClient({
   },
 });
 export default function App() {
-  const { loadOrganization } = useOrganizationStore();
 
-  useEffect(() => {
-    loadOrganization();
-  }, [loadOrganization]);
+  React.useEffect(() => {
+    configureAxios();
+  }, []);
 
   return (
     <>

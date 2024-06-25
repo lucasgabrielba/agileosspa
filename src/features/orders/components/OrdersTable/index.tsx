@@ -3,7 +3,7 @@ import { TableSkeleton } from "../../../../components/common/DataTable/TableSkel
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table";
 import { columns } from "./OrdersTableColumns";
 import { TablePagination } from "@/components/common/DataTable/TablePagination";
-import React from "react";
+import * as React from "react";
 import { useOrganizationStore } from "@/store/useOrganizationStore";
 import { useOrdersQuery } from "../../hooks/useOrdersQuery";
 

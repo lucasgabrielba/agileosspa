@@ -8,7 +8,7 @@ interface SearchOrderHeaderProps {
 
 export function SearchOrderHeader({ searchTerm, setSearchTerm }: SearchOrderHeaderProps) {
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="sticky top-0 bg-background z-10 flex items-center justify-center w-full p-4 shadow-md">
       <div className='flex flex-col items-start w-1/2'>
         <h1 className="lg:text-3xl text-xl text-foreground font-semibold">
           Encontre uma Ordem de Serviço

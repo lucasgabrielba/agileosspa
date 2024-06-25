@@ -1,12 +1,22 @@
 export interface Page<T> {
+  current_page: number;
   data: T[];
-  meta?: PageMeta;
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number;
+  total: number;
+  hasMore?: boolean;
 }
 
-export interface PageMeta {
-  current_page: number;
-  last_page: number;
-  next_page_url?: string;
-  prev_page_url?: string;
-  total: number;
+interface Link {
+  url: string | null;
+  label: string;
+  active: boolean;
 }

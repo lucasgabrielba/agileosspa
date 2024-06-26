@@ -1,18 +1,18 @@
+import * as React from "react";
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { TableSkeleton } from "../../../../components/common/DataTable/TableSkeleton";
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table";
 import { columns } from "./OrdersTableColumns";
 import { TablePagination } from "@/components/common/DataTable/TablePagination";
-import * as React from "react";
 import { useOrganizationStore } from "@/store/useOrganizationStore";
 import { useOrdersQuery } from "../../hooks/useOrdersQuery";
 
 interface OrdersTableProps {
-	debouncedSearchTerm: string;
+	debouncedValue: string;
 }
 
 export function OrdersTable({
-	debouncedSearchTerm,
+	debouncedValue,
 }: OrdersTableProps) {
 	const { organization } = useOrganizationStore();
 
@@ -21,11 +21,10 @@ export function OrdersTable({
 	const [columnFilters, setColumnFilters] = React.useState([]);
 
 	const { data, isFetching, isPending, isPlaceholderData } = useOrdersQuery({
-		queryKey: `orders ${debouncedSearchTerm} ${page} ${sorting}`,
+		queryKey: `orders ${debouncedValue} ${page} ${sorting}`,
 		organization,
-		search: debouncedSearchTerm,
+		search: debouncedValue,
 		page,
-		sorting,
 	});
 
 	const table = useReactTable({
@@ -46,7 +45,7 @@ export function OrdersTable({
 	return (
 		<div className="overflow-hidden w-full">
 			{(isFetching || isPending) ? (
-				<TableSkeleton columns={columns} />
+				<TableSkeleton lines={5} />
 			) : (
 				<Table className="bg-card lg:rounded-sm overflow-hidden">
 					<TableHeader>

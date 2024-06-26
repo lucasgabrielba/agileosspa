@@ -37,11 +37,11 @@ export function TablePagination<T>({
           variant="outline"
           size="sm"
           onClick={() => {
-            if (!isPlaceholderData && data?.hasMore) {
+            if (!isPlaceholderData && data?.next_page_url) {
               setPage(page + 1)
             }
           }}
-          disabled={isPlaceholderData || !data?.hasMore}
+          disabled={isPlaceholderData || !data?.next_page_url}
           className="select-none"
         >
           Próximo

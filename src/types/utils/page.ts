@@ -12,7 +12,6 @@ export interface Page<T> {
   prev_page_url: string | null;
   to: number;
   total: number;
-  hasMore?: boolean;
 }
 
 interface Link {

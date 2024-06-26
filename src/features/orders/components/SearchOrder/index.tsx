@@ -1,22 +1,21 @@
 import { useDebouncedSearch } from '@/components/common/DebounceSearch';
-import { SearchOrderHeader } from './SearchOrderHeader';
 import { Layout } from '@/components/common/Layout';
 import { OrdersTable } from '../OrdersTable';
+import { SearchOrderInput } from './SearchOrderInput';
 
 export function SearchOrder() {
-  const [searchTerm, setSearchTerm, debouncedSearchTerm] = useDebouncedSearch('');
-
+  const { value, setValue, debouncedValue } = useDebouncedSearch();
 
   return (
     <Layout>
       <div className="flex flex-col items-center w-full">
-        <SearchOrderHeader
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
+        <SearchOrderInput
+          value={value}
+          setValue={setValue}
         />
         <div className="flex flex-col items-center w-full mt-4">
           <OrdersTable
-            debouncedSearchTerm={debouncedSearchTerm}
+            debouncedValue={debouncedValue}
           />
         </div>
       </div>

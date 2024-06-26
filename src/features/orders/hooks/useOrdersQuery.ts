@@ -23,7 +23,7 @@ export const useOrdersQuery = ({
 }: OrderQueryProps) => {
   const fetchOrders = async (): Promise<Page<OrderDTO>> => {
     const params = {
-      per_page: 15,
+      per_page: 3,
       page,
       include: 'client,client.phones',
     };
@@ -33,7 +33,7 @@ export const useOrdersQuery = ({
     }
 
     if (sorting) {
-      params['sort'] = sorting[0].desc ? '-' : '' + 'created_at'
+      params['order'] = sorting[0].desc ? '-' : '' + 'created_at'
     }
 
     const response = await api.get(`/organizations/${organization.id}/orders`, { params });

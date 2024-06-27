@@ -23,13 +23,14 @@ export const useOrdersQuery = ({
 }: OrderQueryProps) => {
   const fetchOrders = async (): Promise<Page<OrderDTO>> => {
     const params = {
-      per_page: 3,
+      per_page: 5,
       page,
       include: 'client,client.phones',
     };
 
     if (search) {
       params['search'] = search;
+      page = 1;
     }
 
     if (sorting) {

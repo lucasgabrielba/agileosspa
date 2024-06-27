@@ -5,7 +5,7 @@ export function Orders() {
   return (
     <Layout>
 
-      <Layout.Main withSidebar={false}>
+      <Layout.Main withSidebar={false} className="h-full lg:p-5">
         <SearchOrder />
       </Layout.Main>
 

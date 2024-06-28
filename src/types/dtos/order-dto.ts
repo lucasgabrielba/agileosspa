@@ -46,13 +46,14 @@ export interface OrderHistory {
 export interface OrderAttachments { }
 
 export enum OrderStatus {
-  OPEN = 'open',
-  IN_PROGRESS = 'in_progress',
-  CLOSED = 'closed',
-  CANCELED = 'canceled',
+  OPEN = 'Aberto',
+  IN_PROGRESS = 'Em andamento',
+  REENTRY = 'Reentrada',
+  CLOSED = 'Fechado',
+  CANCELED = 'Cancelado',
 }
 
 export enum OrderPriority {
-  NORMAL = 'normal',
-  HIGH = 'high',
+  NORMAL = 'Normal',
+  HIGH = 'Alta',
 }

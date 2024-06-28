@@ -1,18 +1,39 @@
 import * as React from "react";
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { TableSkeleton } from "../../../../components/common/DataTable/TableSkeleton";
-import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table";
 import { columns } from "./OrdersTableColumns";
 import { TablePagination } from "@/components/common/DataTable/TablePagination";
 import { useOrganizationStore } from "@/store/useOrganizationStore";
 import { useOrdersQuery } from "../../hooks/useOrdersQuery";
+import { TableSearchAndOptions } from "@/components/common/DataTable/TableSearchAndOptions";
+import { TableCore } from "@/components/common/DataTable/TableCore";
 
 interface OrdersTableProps {
 	debouncedValue: string;
+	searchAnOptions: boolean;
+	searchAnOptionsProps?: {
+		value: string;
+		setValue: (value: string) => void;
+		inputProps: {
+			id: string;
+			label: string;
+			placeholder: string;
+		};
+		hasSelectedRows?: boolean;
+		setRowSelection?: (selection: object) => void;
+		entity?: string;
+		button?: {
+			url: string;
+			text: string;
+			icon: React.ReactNode;
+		};
+	};
 }
 
 export function OrdersTable({
 	debouncedValue,
+	searchAnOptions,
+	searchAnOptionsProps,
 }: OrdersTableProps) {
 	const { organization } = useOrganizationStore();
 
@@ -44,52 +65,22 @@ export function OrdersTable({
 
 	return (
 		<div className="overflow-hidden w-full">
+
+			{searchAnOptions && (
+				<TableSearchAndOptions
+					table={table}
+					searchAnOptionsProps={searchAnOptionsProps}
+				/>
+			)}
+
 			{(isFetching || isPending) ? (
 				<TableSkeleton lines={5} />
 			) : (
-				<Table className="bg-card lg:rounded-sm overflow-hidden">
-					<TableHeader>
-						{table.getHeaderGroups().map((headerGroup) => (
-							<TableRow key={headerGroup.id}>
-								{headerGroup.headers.map((header) => (
-									<TableHead key={header.id}>
-										{header.isPlaceholder
-											? null
-											: flexRender(
-												header.column.columnDef.header,
-												header.getContext(),
-											)}
-									</TableHead>
-								))}
-							</TableRow>
-						))}
-					</TableHeader>
-					<TableBody>
-						{table.getRowModel().rows?.length ? (
-							table.getRowModel().rows.map((row) => (
-								<TableRow
-									key={row.id}
-									data-state={row.getIsSelected() && 'selected'}
-								>
-									{row.getVisibleCells().map((cell) => (
-										<TableCell key={cell.id}>
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext(),
-											)}
-										</TableCell>
-									))}
-								</TableRow>
-							))
-						) : (
-							<TableRow>
-								<TableCell colSpan={columns.length} className="text-center">
-									Nenhum resultado encontrado
-								</TableCell>
-							</TableRow>
-						)}
-					</TableBody>
-				</Table>
+				<TableCore 
+					table={table}
+					columns={columns}
+					flexRender={flexRender}
+				/>
 			)}
 			<TablePagination
 				data={data}

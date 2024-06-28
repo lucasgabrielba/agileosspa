@@ -16,7 +16,6 @@ interface OrdersTableProps {
 		setValue: (value: string) => void;
 		inputProps: {
 			id: string;
-			label: string;
 			placeholder: string;
 		};
 		hasSelectedRows?: boolean;
@@ -41,11 +40,14 @@ export function OrdersTable({
 	const [sorting, setSorting] = React.useState([]);
 	const [columnFilters, setColumnFilters] = React.useState([]);
 
+	const maxRows = 6
+
 	const { data, isFetching, isPending, isPlaceholderData } = useOrdersQuery({
 		queryKey: `orders ${debouncedValue} ${page} ${sorting}`,
 		organization,
 		search: debouncedValue,
 		page,
+		perPage: maxRows,
 	});
 
 	const table = useReactTable({
@@ -66,6 +68,7 @@ export function OrdersTable({
 	return (
 		<div className="overflow-hidden w-full">
 
+			<div>
 			{searchAnOptions && (
 				<TableSearchAndOptions
 					table={table}
@@ -74,7 +77,7 @@ export function OrdersTable({
 			)}
 
 			{(isFetching || isPending) ? (
-				<TableSkeleton lines={5} />
+					<TableSkeleton lines={maxRows} />
 			) : (
 				<TableCore 
 					table={table}
@@ -82,6 +85,7 @@ export function OrdersTable({
 					flexRender={flexRender}
 				/>
 			)}
+			</div>
 			<TablePagination
 				data={data}
 				isPlaceholderData={isPlaceholderData}

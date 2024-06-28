@@ -15,8 +15,7 @@ export function SearchOrder() {
                 setValue,
                 inputProps: {
                   id: 'search',
-                  label: 'Buscar por',
-                  placeholder: 'Nome, Telefone e Número da Ordem de Serviço',
+                  placeholder: 'Digite o Nome, Telefone ou Número da Ordem de Serviço',
                 },
               }
             }

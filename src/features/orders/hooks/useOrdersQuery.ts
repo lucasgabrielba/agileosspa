@@ -12,6 +12,7 @@ interface OrderQueryProps {
   sorting?: {
     desc: boolean;
   }[];
+  perPage?: number;
 }
 
 export const useOrdersQuery = ({
@@ -20,10 +21,11 @@ export const useOrdersQuery = ({
   search = null,
   page = 1,
   sorting = null,
+  perPage = 5,
 }: OrderQueryProps) => {
   const fetchOrders = async (): Promise<Page<OrderDTO>> => {
     const params = {
-      per_page: 5,
+      per_page: perPage,
       page,
       include: 'client,client.phones',
     };

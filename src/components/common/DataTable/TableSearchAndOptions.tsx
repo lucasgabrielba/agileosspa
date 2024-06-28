@@ -15,7 +15,6 @@ interface TableSearchAndOptionsProps {
 		setValue: (value: string) => void;
 		inputProps: {
 			id: string;
-			label: string;
 			placeholder: string;
 		};
 
@@ -49,8 +48,8 @@ export const TableSearchAndOptions: React.FC<TableSearchAndOptionsProps> = ({
 	const itemsIds = table.getSelectedRowModel().flatRows.map(row => row.original.id);
 
 	return (
-		<div className="flex flex-col lg:flex-row justify-between pb-4 w-full">
-			<div className="flex flex-row lg:items-center gap-2 p-2 w-full">
+		<div className="flex flex-col lg:flex-row justify-between w-full items-center gap-2 mb-2">
+			<div className="flex flex-row lg:items-center gap-2 w-full">
 				<SearchInput value={value} setValue={setValue} inputProps={inputProps} />
 				{hasSelectedRows && (
 					<DeleteDialog itemsIds={itemsIds} entity={entity} setRowSelection={setRowSelection}>
@@ -60,8 +59,7 @@ export const TableSearchAndOptions: React.FC<TableSearchAndOptionsProps> = ({
 					</DeleteDialog>
 				)}
 			</div>
-			<div className="flex lg:flex-row flex-col gap-2 p-2 items-center">
-				<div className="flex flex-row gap-2 p-2">
+			<div className="flex lg:flex-row flex-col gap-2 justify-between">
 					<SelectViewerColumns table={table} />
 					{button && (
 						<Button onClick={handleNavigate} className="w-full lg:w-auto">
@@ -69,7 +67,7 @@ export const TableSearchAndOptions: React.FC<TableSearchAndOptionsProps> = ({
 							{button.text}
 						</Button>
 					)}
-				</div>
+
 			</div>
 		</div>
 	);

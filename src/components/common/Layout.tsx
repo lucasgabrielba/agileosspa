@@ -33,7 +33,7 @@ Layout.Aside = function Aside({ children, className = '' }) {
 Layout.Main = function Main({ children, className = '', withSidebar }) {
   return (
     <ErrorBoundary>
-      <main className={`bg-tertiary h-3/4 ${withSidebar ? 'w-4/5 float-right' : 'w-full'} flex items-center justify-center overflow-auto ${className}`}>
+      <main className={`bg-secondary h-3/4 ${withSidebar ? 'w-4/5 float-right' : 'w-full'} flex items-center justify-center overflow-auto ${className}`}>
         {children}
       </main>
     </ErrorBoundary>

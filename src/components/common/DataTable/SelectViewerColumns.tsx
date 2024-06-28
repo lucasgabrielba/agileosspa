@@ -25,7 +25,7 @@ export function SelectViewerColumns(
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant="outline">
+				<Button variant="outline" className='rounded-sm'>
 					<Columns3 className="mr-2 h-4 w-4" />
 					<span>Colunas</span>
 					<ChevronDown className="h-4 w-4" />

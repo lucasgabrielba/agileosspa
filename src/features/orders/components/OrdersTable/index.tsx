@@ -63,6 +63,11 @@ export function OrdersTable({
 			sorting,
 			columnFilters,
 		},
+		initialState: {
+			columnVisibility: {
+				'Data de Encerramento': false,
+			},
+		}
 	});
 
 	return (

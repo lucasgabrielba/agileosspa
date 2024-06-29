@@ -62,7 +62,7 @@ export const TableSearchAndOptions: React.FC<TableSearchAndOptionsProps> = ({
 			<div className="flex lg:flex-row flex-col gap-2 justify-between">
 					<SelectViewerColumns table={table} />
 					{button && (
-						<Button onClick={handleNavigate} className="w-full lg:w-auto">
+						<Button onClick={handleNavigate} className="w-full lg:w-auto gap-2">
 							{button.icon}
 							{button.text}
 						</Button>
